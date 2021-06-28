@@ -15,16 +15,15 @@ Amplify.configure({
 		identityPoolId: config.cognito.IDENTITY_POOL_ID,
 		userPoolWebClientId: config.cognito.APP_CLIENT_ID
 	},
-	API: {
-		endpoints: [
-			{
-				name: 'testApiCall',
-				endpoint: config.apiGateway.URL,
-				region: config.apiGateway.REGION
-			}
-		]
-	}
 });
+
+let myAppConfig = {
+	aws_appsync_graphqlEndpoint: config.graphql.URL,
+	aws_appsync_region: config.graphql.REGION,
+	aws_appsync_authenticationType: config.graphql.AUTHENTICATION_TYPE
+}
+
+Amplify.configure(myAppConfig);
 
 ReactDOM.render(
 	<Router>
